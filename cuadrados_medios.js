@@ -1,24 +1,24 @@
 function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
     let resultados = [];
     let x = semilla;
-    let d = semilla.toString().length;
+    const d = semilla.toString().length; // dígitos de la semilla inicial
     let vistos = new Map();
 
     for (let i = 0; i < maxIteraciones; i++) {
         let y = x * x;
         let yStr = y.toString();
 
-        // Si la longitud es menor que d, agregar ceros a la izquierda
+        // Agregar ceros si el cuadrado tiene menos de d dígitos
         if (yStr.length < d) {
             yStr = yStr.padStart(d, "0");
         }
 
-        // Si longitud impar y mayor que d, agregar un cero para emparejar
-        if (yStr.length % 2 !== 0 && yStr.length > d) {
+        // Ajustar cero si (longitud - d) es impar
+        if ((yStr.length - d) % 2 !== 0) {
             yStr = "0" + yStr;
         }
 
-        // Extraer los d dígitos centrales sin importar la longitud total
+        // Extraer d dígitos centrales según la semilla inicial
         let start = Math.floor((yStr.length - d) / 2);
         let xi1Str = yStr.substring(start, start + d);
         let xi1 = parseInt(xi1Str, 10);
@@ -52,5 +52,5 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
     return resultados;
 }
 
-// Prueba
-cuadradosMediosTabla(1220, 100);
+// Pruebas
+cuadradosMediosTabla(1220, 250);
