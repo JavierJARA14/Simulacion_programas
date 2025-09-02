@@ -25,7 +25,6 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
         let ri1 = xi1 / Math.pow(10, d);
 
         resultados.push({
-            i: i,
             xi: x,
             y0: yStr,
             xi1: xi1,
