@@ -53,5 +53,5 @@ function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
     return resultados;
 }
 
-// Ejemplo de prueba
+// Ejemplo de prueba (pocas iteraciones)
 multiplicadorConstanteTabla(1234, 1000, 250);
