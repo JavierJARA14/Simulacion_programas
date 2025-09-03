@@ -1,14 +1,16 @@
-function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
+function productosMediosTabla(x0, x1, maxIteraciones = 100) {
     let resultados = [];
-    let x = semilla;
-    const d = semilla.toString().length; // dígitos de la semilla inicial
+    const d = x0.toString().length; // dígitos de la semilla inicial
     let vistos = new Map();
 
+    let prev = x0;
+    let x = x1;
+
     for (let i = 0; i < maxIteraciones; i++) {
-        let y = x * x;
+        let y = prev * x;
         let yStr = y.toString();
 
-        // Agregar ceros si el cuadrado tiene menos de d dígitos
+        // Agregar ceros si el producto tiene menos de d dígitos
         if (yStr.length < d) {
             yStr = yStr.padStart(d, "0");
         }
@@ -25,6 +27,7 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
         let ri1 = xi1 / Math.pow(10, d);
 
         resultados.push({
+            prev: prev,
             xi: x,
             y0: yStr,
             xi1: xi1,
@@ -37,12 +40,15 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
             console.log("🔁 Ciclo detectado");
             console.log("Total de iteraciones:", i + 1);
             console.log("Valor repetido:", xi1);
-            console.log("Primera vez que apareció en iteración:", vistos.get(xi1));
+            console.log("Primera vez que apareció en iteración:", vistos.get(xi1) -1);
             console.log("Periodo del ciclo:", i);
             return resultados;
         }
 
         vistos.set(xi1, i + 1);
+
+        // Avanzar semillas: la nueva se multiplica con la actual
+        prev = x;
         x = xi1;
     }
 
@@ -51,5 +57,5 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
     return resultados;
 }
 
-// Pruebas
-cuadradosMediosTabla(5474, 250);
+// Ejemplo de prueba
+productosMediosTabla(5323, 6967, 250);
