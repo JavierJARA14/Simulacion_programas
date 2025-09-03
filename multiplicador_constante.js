@@ -1,13 +1,12 @@
-function productosMediosTabla(x0, x1, maxIteraciones = 100) {
+function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
     let resultados = [];
     const d = x0.toString().length; // dígitos de la semilla inicial
     let vistos = new Map();
 
-    let prev = x0;
-    let x = x1;
+    let x = x0;
 
     for (let i = 0; i < maxIteraciones; i++) {
-        let y = prev * x;
+        let y = a * x;
         let yStr = y.toString();
 
         // Agregar ceros si el producto tiene menos de d dígitos
@@ -27,8 +26,8 @@ function productosMediosTabla(x0, x1, maxIteraciones = 100) {
         let ri1 = xi1 / Math.pow(10, d);
 
         resultados.push({
-            prev: prev,
             xi: x,
+            a: a,
             y0: yStr,
             xi1: xi1,
             ri1: ri1
@@ -46,9 +45,6 @@ function productosMediosTabla(x0, x1, maxIteraciones = 100) {
         }
 
         vistos.set(xi1, i + 1);
-
-        // Avanzar semillas: la nueva se multiplica con la actual
-        prev = x;
         x = xi1;
     }
 
@@ -58,6 +54,4 @@ function productosMediosTabla(x0, x1, maxIteraciones = 100) {
 }
 
 // Ejemplo de prueba
-productosMediosTabla(5323, 6967, 250);
-// Ejemplo con pocas iteraciones
-//productosMediosTabla(1001, 5095, 250);
+multiplicadorConstanteTabla(1234, 1000, 250);
