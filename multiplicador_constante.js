@@ -39,7 +39,7 @@ function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
             console.log("🔁 Ciclo detectado");
             console.log("Total de iteraciones:", i + 1);
             console.log("Valor repetido:", xi1);
-            console.log("Primera vez que apareció en iteración:", vistos.get(xi1) -1);
+            console.log("Primera vez que apareció en iteración:", vistos.get(xi1) -1, " (", vistos.get(xi1),")");
             console.log("Periodo del ciclo:", i);
             return resultados;
         }
@@ -54,4 +54,4 @@ function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
 }
 
 // Ejemplo de prueba (pocas iteraciones)
-multiplicadorConstanteTabla(1234, 1000, 250);
+multiplicadorConstanteTabla(2389, 6666, 1000);
