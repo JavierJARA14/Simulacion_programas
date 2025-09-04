@@ -1,4 +1,4 @@
-# 📊 Simulación - Programas de Números Pseudaleatorios  
+# 📊 Simulación - Algoritmos
 
 Este repositorio contiene programas con diferentes **métodos de generación de números pseudaleatorios**, correspondientes a la **Unidad 2** de la materia de *Simulación*.  
 
