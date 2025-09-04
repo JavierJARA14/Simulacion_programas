@@ -49,7 +49,7 @@ function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
     }
 
     console.table(resultados);
-    console.log("✅ No hubo repetición en", maxIteraciones, "iteraciones");
+    console.log("No hubo repetición en", maxIteraciones, "iteraciones");
     return resultados;
 }
 

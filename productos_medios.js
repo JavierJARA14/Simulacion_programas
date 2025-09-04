@@ -53,7 +53,7 @@ function productosMediosTabla(x0, x1, maxIteraciones = 100) {
     }
 
     console.table(resultados);
-    console.log("✅ No hubo repetición en", maxIteraciones, "iteraciones");
+    console.log("No hubo repetición en", maxIteraciones, "iteraciones");
     return resultados;
 }
 

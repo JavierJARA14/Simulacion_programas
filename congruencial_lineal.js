@@ -10,7 +10,7 @@ function lcgTabla(a, c, m, x0) {
   const vistos = new Map(); // xi -> iteración donde apareció
   let x = x0;
 
-  for (let i = 0; i < m; i++) {  // 👈 límite natural = m
+  for (let i = 0; i < m; i++) {  // <-- límite natural = m
     const axi_c = a * x + c;
     const xi1 = ((axi_c % m) + m) % m; // residuo en [0, m-1]
     const ri1 = xi1 / (m - 1);         // tu definición: xi/m-1
@@ -38,7 +38,7 @@ function lcgTabla(a, c, m, x0) {
   }
 
   console.table(resultados);
-  console.log("✅ No hubo repetición en", m, "iteraciones (se generó un ciclo completo)");
+  console.log("No hubo repetición en", m, "iteraciones (se generó un ciclo completo)");
   return resultados;
 }
 
