@@ -1,5 +1,5 @@
-function lcgTabla(a, c, m, x0) {
-  if (!Number.isInteger(a) || !Number.isInteger(c) || !Number.isInteger(m) || !Number.isInteger(x0)) {
+function lcgTabla(k, g, m, x0) {
+  if (!Number.isInteger(k) || !Number.isInteger(g) || !Number.isInteger(m) || !Number.isInteger(x0)) {
     throw new Error("a, c, m y x0 deben ser enteros.");
   }
   if (m <= 1) {
@@ -11,7 +11,8 @@ function lcgTabla(a, c, m, x0) {
   let x = x0;
 
   for (let i = 0; i < m; i++) {  // <-- límite natural = m
-    const axi_c = a * x + c;
+    const a = 5 + 8*k;
+    const axi_c = a * x;
     const xi1 = ((axi_c % m) + m) % m; // residuo en [0, m-1]
     const ri1 = xi1 / (m - 1);         // tu definición: xi/m-1
 
@@ -44,4 +45,4 @@ function lcgTabla(a, c, m, x0) {
 
 // Ejemplos rápidos de prueba:
 //lcgTabla(5, 3, 14, 7);   // m pequeño para ver rápido el ciclo
-lcgTabla(221, 5, 128, 99);   // m pequeño para ver rápido el ciclo
+lcgTabla(5, 8, 256, 313);   // m pequeño para ver rápido el ciclo
