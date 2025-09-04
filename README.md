@@ -76,5 +76,5 @@ Ri = Xi / (m - 1)
 Cada algoritmo está implementado en su propio archivo. Puedes ejecutarlos directamente para observar cómo se generan las tablas con las secuencias de números.  
 
 ---
-✍️ Autor: *[JavierJARA14]*  
+✍️ Autor: *JavierJARA14*  
 📅 Materia: *Simulación*  
