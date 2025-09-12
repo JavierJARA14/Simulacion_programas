@@ -1,4 +1,4 @@
-function lcgCuadratico(a, b, c, g, x0) {
+function lcgCuadratico(a, b, c, g, x0, limit) {
   // Validaciones de parámetros
   if (!Number.isInteger(a) || !Number.isInteger(b) || !Number.isInteger(c) || !Number.isInteger(x0) || !Number.isInteger(g)) {
     throw new Error("a, b, c, g y x0 deben ser enteros.");
@@ -22,7 +22,7 @@ function lcgCuadratico(a, b, c, g, x0) {
   const vistos = new Map(); // xi -> iteración donde apareció
   let x = x0;
 
-  for (let i = 0; i < m + 1; i++) {
+  for (let i = 0; i < limit + 1; i++) {
     const expr = (a * (x * x)) + (b * x) + c;   // (axi² + bxi + c)
     const xi1 = ((expr % m) + m) % m;           // asegurar positivo
     const ri1 = +(xi1 / (m - 1)).toFixed(6);    // ri = xi / (m-1)
@@ -55,4 +55,4 @@ function lcgCuadratico(a, b, c, g, x0) {
 }
 
 // Ejemplo válido
-lcgCuadratico(62,11,71,7,1208);
+lcgCuadratico(62,11,415,9,1208,500);

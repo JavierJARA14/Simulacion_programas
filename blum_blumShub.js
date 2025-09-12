@@ -9,13 +9,13 @@ function lcgBlum(p, q, x0) {
 
   // Validación de condiciones
 //   if (a % 2 !== 0 || a % 4 === 0) {
-//     throw new Error("❌ 'a' debe ser par pero NO múltiplo de 4.");
+//     throw new Error("'a' debe ser par pero NO múltiplo de 4.");
 //   }
 //   if (c % 2 === 0) {
-//     throw new Error("❌ 'c' debe ser impar.");
+//     throw new Error("'c' debe ser impar.");
 //   }
 //   if ((b - 1) % 4 !== 2) {
-//     throw new Error("❌ '(b - 1) mod 4' debe ser igual a 2.");
+//     throw new Error("'(b - 1) mod 4' debe ser igual a 2.");
 //   }
 
   const resultados = [];
