@@ -1,36 +1,36 @@
-function lcgCuadratico(a, b, c, g, x0) {
+function lcgBlum(p, q, x0) {
   // Validaciones de parámetros
-  if (!Number.isInteger(a) || !Number.isInteger(b) || !Number.isInteger(c) || !Number.isInteger(x0) || !Number.isInteger(g)) {
-    throw new Error("a, b, c, g y x0 deben ser enteros.");
-  }
+//   if (!Number.isInteger(a) || !Number.isInteger(b) || !Number.isInteger(c) || !Number.isInteger(x0) || !Number.isInteger(g)) {
+//     throw new Error("a, b, c, g y x0 deben ser enteros.");
+//   }
 
-  // m = 2^g
-  const m = Math.pow(2, g);
+  // m = pq
+  const m = p * q;
 
   // Validación de condiciones
-  if (a % 2 !== 0 || a % 4 === 0) {
-    throw new Error("❌ 'a' debe ser par pero NO múltiplo de 4.");
-  }
-  if (c % 2 === 0) {
-    throw new Error("❌ 'c' debe ser impar.");
-  }
-  if ((b - 1) % 4 !== 2) {
-    throw new Error("❌ '(b - 1) mod 4' debe ser igual a 2.");
-  }
+//   if (a % 2 !== 0 || a % 4 === 0) {
+//     throw new Error("❌ 'a' debe ser par pero NO múltiplo de 4.");
+//   }
+//   if (c % 2 === 0) {
+//     throw new Error("❌ 'c' debe ser impar.");
+//   }
+//   if ((b - 1) % 4 !== 2) {
+//     throw new Error("❌ '(b - 1) mod 4' debe ser igual a 2.");
+//   }
 
   const resultados = [];
   const vistos = new Map(); // xi -> iteración donde apareció
   let x = x0;
 
   for (let i = 0; i < m + 1; i++) {
-    const expr = (a * (x * x)) + (b * x) + c;   // (axi² + bxi + c)
-    const xi1 = ((expr % m) + m) % m;           // asegurar positivo
-    const ri1 = +(xi1 / (m - 1)).toFixed(6);    // ri = xi / (m-1)
+    const expr = (x * x);   // (xi²)
+    const xi1 = ((expr % m) + m) % m;           // mod (m)
+    const ri1 = +(xi1 / (m - 1));    // ri = xi / (m-1)
 
     resultados.push({
       xi: x,
-      expr: expr,
-      xi_mod: xi1,
+      "xi²": expr,
+      "xi + 1": xi1,
       ri: ri1,
     });
 
@@ -55,4 +55,4 @@ function lcgCuadratico(a, b, c, g, x0) {
 }
 
 // Ejemplo válido
-lcgCuadratico(62,11,71,7,1208);
+lcgBlum(3187, 8431, 3698);
