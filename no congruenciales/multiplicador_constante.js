@@ -1,14 +1,30 @@
-function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
+function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
+    const d = x0.toString().length;
     let resultados = [];
-    let x = semilla;
-    const d = semilla.toString().length; // dígitos de la semilla inicial
     let vistos = new Map();
+    //Validaciones
+    if (!Number.isInteger(x0) || !Number.isInteger(a)) {
+        throw new Error("❌ x0 y a deben ser enteros.");
+    }
+
+    if (x0 <= 0) {
+        throw new Error("❌ La semilla inicial (x0) debe ser mayor que 0.");
+    }
+
+    if (a <= 0) {
+        throw new Error("❌ El multiplicador (a) debe ser mayor que 0.");
+    }
+    if (d < 2) {
+        throw new Error("❌ La semilla inicial debe tener al menos 2 dígitos para aplicar el método de dígitos centrales.");
+    }
+  
+    let x = x0;
 
     for (let i = 0; i < maxIteraciones; i++) {
-        let y = x * x;
+        let y = a * x;
         let yStr = y.toString();
 
-        // Agregar ceros si el cuadrado tiene menos de d dígitos
+        // Agregar ceros si el producto tiene menos de d dígitos
         if (yStr.length < d) {
             yStr = yStr.padStart(d, "0");
         }
@@ -26,6 +42,7 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
 
         resultados.push({
             xi: x,
+            a: a,
             y0: yStr,
             xi1: xi1,
             ri1: ri1
@@ -37,7 +54,7 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
             console.log("🔁 Ciclo detectado");
             console.log("Total de iteraciones:", i + 1);
             console.log("Valor repetido:", xi1);
-            console.log("Primera vez que apareció en iteración:", vistos.get(xi1));
+            console.log("Primera vez que apareció en iteración:", vistos.get(xi1) -1, " (", vistos.get(xi1),")");
             console.log("Periodo del ciclo:", i);
             return resultados;
         }
@@ -51,5 +68,5 @@ function cuadradosMediosTabla(semilla, maxIteraciones = 100) {
     return resultados;
 }
 
-// Pruebas
-cuadradosMediosTabla(5474, 250);
+// Ejemplo de prueba (pocas iteraciones)
+multiplicadorConstanteTabla(2389, 6666, 1000);
