@@ -38,7 +38,7 @@ function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
         let start = Math.floor((yStr.length - d) / 2);
         let xi1Str = yStr.substring(start, start + d);
         let xi1 = parseInt(xi1Str, 10);
-        let ri1 = xi1 / Math.pow(10, d);
+        let ri1 = formatRi(xi1 / Math.pow(10, d));
 
         resultados.push({
             xi: x,
@@ -66,6 +66,10 @@ function multiplicadorConstanteTabla(x0, a, maxIteraciones = 100) {
     console.table(resultados);
     console.log("No hubo repetición en", maxIteraciones, "iteraciones");
     return resultados;
+}
+
+function formatRi(valor, cifras = 6) {
+  return Number(valor.toPrecision(cifras));
 }
 
 // Ejemplo de prueba (pocas iteraciones)
